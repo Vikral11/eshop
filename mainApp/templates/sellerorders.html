@@ -1,0 +1,70 @@
+{% extends 'index.html'%}
+{% load cart %}
+{% load static %}
+{% block title %}
+<title>Eshop Signup</title>
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<br>
+
+<div class="container">
+   
+        <div  class="w-100 mybag text-light text-center"
+        style="height: 50px; margin-top: 15px; border-radius: 3px;">
+        <h5 style="margin-top: 10px; padding: 1.5%;">My Order History </h5>
+        </div>
+    
+    <div class="row" style="overflow-x:auto;">
+        <table class="table   table-bordered mt-3" 
+        >
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Buyer</th>
+                <th>Buyer Address</th>
+                <th>Final Price</th>
+                <th>Payment Mode</th>
+                <th>Order Status</th>
+                <th>Active Status</th>
+                <th>Payment Status
+                </th>
+                <th>Update</th>
+            </tr>
+            {% for i in products %}
+            <tr>
+                <th>{{i.product.name}}</th>
+                <th>{{i.qty}}</th>
+                <th>{{i.buyer.name}}</th>
+                <th>{{i.buyer.address1}}</th>
+                <th>{{i.total}}</th>
+                <th>{{i.checkout.mode}}</th>
+                <th>{{request|orderstat:i}}</th>
+                <th>{{i.active}}</th>
+            <th>
+                {{request|paystat:i.checkout}}
+                </th>
+                <th><a href="/updateorderhis/{{i.id}}/"class="red btn"
+                    style=" color: antiquewhite;border-radius:40%; width: 80%;"><span
+                        class="material-symbols-outlined">
+                        upgrade 
+                    </span></a></th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+
+    
+</div>
+
+
+
+
+
+
+{% endblock %}

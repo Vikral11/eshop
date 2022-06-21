@@ -1,0 +1,90 @@
+{% extends 'index.html'%}
+
+{% load static %}
+{% block title %}
+<title>Eshop Signup</title>
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<br>
+
+<div class="container-fliuid" style="border: 2px solid black;">
+  <div class="row">
+    <div class="col-md-6 col-sm-12 col-12 ">
+      <img src="{% static 'media/signup.jpg' %}" class="w-100 " style="height: 600px;">
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+      <div  class="mb-3 w-100 mybag text-light text-center"
+        style="height: 50px; margin-top: 15px; border-radius: 3px;">
+        <h5 style="margin-top: 10px; padding: 1.5%;">Signup</h5>
+        </div>
+
+
+      {% for i in messages %}
+      <div class="alert alert-danger" role="alert">
+        {{i}}
+      </div>
+      {% endfor %}
+
+      <form method="post" style="opacity: .9;">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fname" required placeholder="Enter your Name" name="fname">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">User Name</label>
+          <input type="text" class="form-control" id="name" required placeholder="Enter your Name" name="name">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" name="email" class="form-control" id="email" required placeholder="Enter your Email">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="number" name="phone" class="form-control" id="phone" required placeholder="Enter your Ph. Number">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required placeholder="Enter your password">
+        </div>
+
+        <div class="mb-3">
+          <label for="cpassword" class="form-label"> Confirm Password</label>
+          <input type="password" class="form-control" id="cpassword" name="cpassword" required placeholder="Confirm assword">
+        </div>
+        
+        <div class="mb-3">
+          <label for="actype" class="form-label">Account Type</label>
+          <select name="actype" class="form-control">
+              <option value="seller" >Seller</option>
+              <option value="buyer">Buyer</option>
+          </select>
+      </div>
+
+      <button type="submit" style="width: 60%;" class="hello mt-3">Submit</button>
+        <a href="/login" class="text-decoration-none">
+          <p>Already have an Account?</p>
+        </a>
+      </form>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+</div>
+{% endblock %}

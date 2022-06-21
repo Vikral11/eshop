@@ -1,0 +1,27 @@
+.mybag {
+
+	background: #333;
+	box-shadow: 5px 5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444, inset -5px -5px 10px #222;
+	color: #222;
+
+}
+.aboutdiv{
+	height: 100%;
+	width: 100%;
+	background-color: red;
+}
+.aboutdiv h1{
+	color: azure;
+	font-size: 40px;
+	
+
+
+	
+}
+
+.accordion-body p .py{
+	color: black;
+	
+}
+
+

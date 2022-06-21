@@ -1,0 +1,125 @@
+{% extends 'index.html'%}
+
+{% load static %}
+{% block title %}
+<title>Eshop Update Seller</title>
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="container-fliuid ">
+  <div class="row w-100">
+    <div class="col-md-6 col-sm-12 col-12 sellerdiv ">
+
+      {% if seller.pic %}
+      <img src="{{seller.pic.url}}" class="sellerpic w-100" height="700px" style="border-radius: 20px; padding: 2%;">
+      {% else %}
+      <img src='{% static "media/noimage.png/" %}' class=" sellerpic w-100" height="700px"
+        style="border-radius: 20px; padding: 2%;">
+      {% endif %}
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+      <div  class="w-100 mybag text-light text-center"
+        style="height: 50px; margin-top: 15px; border-radius: 3px;">
+        <h5 style="margin-top: 10px; padding: 1.5%;">Update Profile Section </h5>
+        </div>
+
+
+
+      {% for i in messages %}
+      <div class="alert alert-danger" role="alert">
+        {{i}}
+      </div>
+      {% endfor %}
+
+
+      <form method="post" enctype="multipart/form-data" class="mt-3" style="opacity: .9;margin-bottom: 10px; ">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fname" placeholder="Enter your Name" name="fname"
+            value="{{seller.name}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" name="email" class="form-control" id="email" placeholder="Enter your Email"
+            value="{{seller.email}}">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="number" name="phone" class="form-control" id="phone" placeholder="Enter your Ph. Number"
+            value="{{seller.phone}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">Address 1</label>
+          <input type="text" class="form-control" placeholder="Address line 1" name="add1" value="{{seller.address1}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">Address 2</label>
+          <input type="text" class="form-control" placeholder="Address line 2" name="add2" value="{{seller.address2}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">Address 3</label>
+          <input type="text" class="form-control" placeholder="Address line 3" name="add3" value="{{seller.address3}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label"> Pin </label>
+          <input type="text" class="form-control" placeholder="Enter your pin" name="pin" value="{{seller.pin}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">City</label>
+          <input type="text" class="form-control" placeholder="Enter your City" name="city" value="{{seller.city}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">State</label>
+          <input type="text" class="form-control" placeholder="Enter your State" name="state" value="{{seller.state}}">
+        </div>
+        <div class="mb-3">
+          <label for="pic" class="form-label">Update Profile Picture</label>
+          <input type="file" class="form-control" id="pic" name="pic" value="{{seller.pic}}">
+        </div>
+
+
+
+
+
+
+
+
+
+        <center><button type="submit" style="width: 40%;" class="red1 ">Update</button></center>
+
+      </form>
+      
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+</div>
+{% endblock %}

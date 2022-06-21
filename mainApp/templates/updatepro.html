@@ -1,0 +1,192 @@
+{% extends 'index.html'%}
+
+{% load static %}
+{% block title %}
+<title>Eshop Signup</title>
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<br>
+
+<div class="container" style="border: 2px solid  black; " class="col-lg-3 col-md-6 col-sm-12 col-12">
+
+
+    <div  class="w-100 mybag text-light text-center"
+        style="height: 50px; margin-top: 15px; border-radius: 3px;">
+        <h5 style="margin-top: 10px; padding: 1.5%;">Update Product </h5>
+        </div>
+
+
+
+    <form method="post" enctype="multipart/form-data" class="mt-3" style="opacity: .9;margin-bottom: 10px; ">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="fname" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="fname" placeholder="Enter your Product Name" name="pname"
+                value="{{product.name}}">
+        </div>
+        <div class="row mb-3">
+
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="form-control">
+                    <label> Main Cat</label>
+                    <select class="form-control" name="maincat">
+                        <option>{{product.main_cat}}</option>
+                        {% for i in Main %}
+                        <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+
+
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 ">
+
+                <label class="form-control"> Sub Cat <select class="form-control" name="subcat">
+                    <option>{{product.sub_cat}}</option>
+                        {% for i in Sub %}
+                        <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select></label>
+
+
+
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 ">
+
+                <label class="form-control"> Brand <select class="form-control" name="brand">
+                    <option>{{product.brand}}</option>
+                        {% for i in Brand%}
+                        <option value="{{i}}">{{i}}</option>
+                        {% endfor %}
+                    </select></label>
+
+
+
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 ">
+
+                <label class="form-control"> Stock <select class="form-control" name="stock">
+                        
+                        <option>In Stock</option>
+                        <option>Out Of Stock</option>
+                    </select></label>
+
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="row mb-3">
+            <div class="col-md-6 col-12 mb-3">
+                <label for="" class="form-control"> Base Price <input value="{{product.baseprice}}" type="number" class="form-control" name="bp" required>
+                </label>
+
+            </div>
+
+            <div class="col-md-6 col-12 mb-3">
+                <label for="" class="form-control"> Discount Percentage <input value="{{product.discount}}" type="number" class="form-control"
+                        name="dp" required>
+                </label>
+
+            </div>
+            <div class="col-md-6 col-12 mb-3">
+                <label for="" class="form-control"> Colour <input value="{{product.color}}" type="text" class="form-control" name="colour">
+                </label>
+
+            </div>
+            <div class="col-md-6 col-12 mb-3">
+                <label for="" class="form-control"> Size <input value="{{product.size}}"type="text" class="form-control" name="size"> </label>
+
+            </div>
+        </div>
+
+
+        <div class="row mb-3">
+            <div>
+                <label class=" form-control"> Description </label>
+                <textarea class="form-control" rows="6" name="desc">{{product.desc}}</textarea>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-3 col-sm-6 col-12 ">
+                <div class="form-control">
+                    <label class="form-label">Pic 1 </label>
+                    <input type="file" class="form-control" name="pic1">
+                </div>
+
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 ">
+                <div class="form-control">
+                    <label class="form-label">Pic 2 </label>
+                    <input type="file" class="form-control" name="pic2">
+                </div>
+
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 ">
+                <div class="form-control">
+                    <label class="form-label">Pic 3 </label>
+                    <input type="file" class="form-control" name="pic3">
+                </div>
+
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 ">
+                <div class="form-control">
+                    <label class="form-label">Pic 4 </label>
+                    <input type="file" class="form-control" name="pic4">
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+        <center>
+            <div>
+                <button type="submit" class="btn-lg hello" style="width: 40%;">Update</button>
+                <button type="reset" class="btn-lg hello " style="width: 40%;">Reset</button>
+            </div>
+        </center>
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+{% endblock %}

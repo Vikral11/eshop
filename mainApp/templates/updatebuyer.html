@@ -1,0 +1,117 @@
+{% extends 'index.html'%}
+
+{% load static %}
+{% block title %}
+<title>Eshop Update Buyer</title>
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<br>
+
+<div class="container-fliuid ">
+  <div class="row w-100">
+    <div class="col-md-6 col-sm-12 col-12">
+
+     
+      <img src='{% static "media/user default.jpg/" %}' class="w-100" height="700px"
+        style="border-radius: 20px; padding: 2%;">
+      
+    </div>
+    <div class="col-md-6 col-sm-12 col-12">
+      <div  class="w-100 mybag text-light text-center"
+            style="height: 50px; margin-top: 15px; border-radius: 3px;">
+            <h5 style="margin-top: 10px; padding: 1.5%;">UPDATE PROFILE SECTION </h5>
+            </div>
+
+
+      {% for i in messages %}
+      <div class="alert alert-danger" role="alert">
+        {{i}}
+      </div>
+      {% endfor %}
+
+
+      <form method="post" enctype="multipart/form-data" style="margin-bottom: 10px; opacity: .9;">
+        {% csrf_token %}
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="fname" placeholder="Enter your Name" name="fname"
+            value="{{buyer.name}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" name="email" class="form-control" id="email" placeholder="Enter your Email"
+            value="{{buyer.email}}">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="number" name="phone" class="form-control" id="phone" placeholder="Enter your Ph. Number"
+            value="{{buyer.phone}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">Address 1</label>
+          <input type="text" class="form-control" placeholder="Address line 1" name="add1" value="{{buyer.address1}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">Address 2</label>
+          <input type="text" class="form-control" placeholder="Address line 2" name="add2" value="{{buyer.address2}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">Address 3</label>
+          <input type="text" class="form-control" placeholder="Address line 3" name="add3" value="{{buyer.address3}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label"> Pin </label>
+          <input type="text" class="form-control" placeholder="Enter your pin" name="pin" value="{{buyer.pin}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">City</label>
+          <input type="text" class="form-control" placeholder="Enter your City" name="city" value="{{buyer.city}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="fname" class="form-label">State</label>
+          <input type="text" class="form-control" placeholder="Enter your State" name="state" value="{{buyer.state}}">
+        </div>
+        
+
+
+
+
+
+
+
+
+
+        <button type="submit" class="btn-lg hello w-100">Update</button>
+
+      </form>
+      
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends 'index.html'%}
+{% load cart %}
+{% load static %}
+{% block title %}
+<title>Eshop Cart</title>
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<br>
+
+
+<div class="container-fluid text-light mybag " style="padding: 5px">
+    <center>
+        <h2>My Cart</h2>
+    </center>
+</div>
+
+<div class="container-fluid">
+    <table class="table table-striped table-hover  table-bordered" style="color: antiquewhite;">
+        <tr>
+            <th style="color: antiquewhite;">Pic</th>
+            <th style="color: antiquewhite;">Name</th>
+            <th style="color: antiquewhite;">Color</th>
+            <th style="color: antiquewhite;">Size</th>
+            <th style="color: antiquewhite;">Price</th>
+            <th style="color: antiquewhite;" colspan="3">
+                <center>Quantity</center>
+            </th>
+
+            <th style="color: antiquewhite;">Total Price</th>
+            <th style="color: antiquewhite;">Remove</th>
+        </tr>
+        {% for i in product %}
+        <tr>
+            <td style="color: antiquewhite;"><img src="{{i.pic1.url}}" width="50"></td>
+            <td style="color: antiquewhite;">{{i.name}}</td>
+            <td style="color: antiquewhite;">{{i.color}}</td>
+            <td style="color: antiquewhite;">{{i.size}}</td>
+            <td style="color: antiquewhite;">&#8377; {{i.final_price}}</td>
+            <td style="color: antiquewhite;"><a href="/ucart/{{i.id}}/1/"class="red btn"
+                style=" color: antiquewhite;border-radius:40%; width: 50%;"><span
+                    class="material-symbols-outlined">remove</span></a></td>
+            <td style="color: antiquewhite;"> {{request| cartqty:i.id}}</td>
+            <td style="color: antiquewhite;"><a href="/ucart/{{i.id}}/0/"class="red btn"
+                style=" color: antiquewhite;border-radius:40%; width: 50%;"><span
+                    class="material-symbols-outlined">add</span></a></td>
+            
+            <td style="color: antiquewhite;">&#8377; {{request| cartTotal:i.id}}</td>
+            <td style="color: antiquewhite;"><a href="/rcart/{{i.id}}/"class="red btn"
+                style=" color: antiquewhite;border-radius:40%; width: 50%;"><span
+                    class="material-symbols-outlined">delete_forever</span></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-12"></div>
+        <div class="col-md-6 col-sm-12 col-12" >
+            <table class=" table table-bordered " style="color: antiquewhite;">
+                <tr>
+                    <th style="color: antiquewhite;">Total Price</th>
+                    <td style="color: antiquewhite;">&#8377; {{Total}}</td>
+                </tr>
+                <tr>
+                    <th style="color: antiquewhite;"> Shipping </th>
+                    <td style="color: antiquewhite;">&#8377; {{Shipping}}</td>
+                </tr>
+                <tr>
+                    <th style="color: antiquewhite;">Final Price</th>
+                    <td style="color: antiquewhite;">&#8377; {{Final}}</td>
+                </tr>
+                <tr>
+                    <td style="color: antiquewhite;" colspan="2">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <center>{% if request|checkshow:Final %}
+                        <button type="submit"  class="red1 mt-3">Checkout</button>
+                        {% else %}
+                        <a href=""><button type="button"  class="red1 mt-3" disabled>Checkout</button></a>
+                        {% endif %}    </center>
+                    </form>
+                </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

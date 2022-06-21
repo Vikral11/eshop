@@ -1,0 +1,288 @@
+{% extends 'index.html'%}
+
+{% load static %}
+{% block title %}
+<title>Eshop Signup</title>
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<br>
+
+<div class="container-fliuid" style="border: 2px  black;">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-12" enctype="multipart/form/data">
+
+            {% if seller.pic %}
+            <img src="{{seller.pic.url}}" class="w-100" height="700px" style="border-radius: 20px; padding: 2%;">
+            {% else %}
+            <img src='{% static "media/noimage.png/" %}' class="w-100">
+            {% endif %}
+
+        </div>
+        <div class="col-md-6 col-sm-12 col-12" style="padding: 2%;">
+            <div  class="w-100 mybag text-light text-center"
+            style="height: 50px; margin-top: 15px; border-radius: 3px;">
+            <h5 style="margin-top: 10px; padding: 1.5%;">SELLER PROFILE SECTION </h5>
+            </div>
+            <table class="table">
+
+                <tr>
+                    <th>
+                        <label for=""> Name </label>
+                    </th>
+                    <th>
+                        <label >{{seller.name}}</label>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for=""> Username </label>
+                    </th>
+                    <th>
+                        <label >{{seller.user_name}}</label>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for=""> Email </label>
+                    </th>
+                    <th>
+                        <label >{{seller.email}}</label>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for=""> Phone </label>
+                    </th>
+                    <th>
+                        <label>{{seller.phone}}</label>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for=""> Address 1 </label>
+                    </th>
+                    <th>
+                        <label>{{seller.address1}}</label>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for=""> Address 2 </label>
+                    </th>
+                    <th>
+                        <label>{{seller.address2}}</label>
+                    </th>
+                </tr>
+
+
+
+                <tr>
+                    <th>
+                        <label for=""> Address 3 </label>
+                    </th>
+                    <th>
+                        <label>{{seller.address3}}</label>
+                    </th>
+                </tr>
+
+
+                <tr>
+                    <th>
+                        <label for=""> City</label>
+                    </th>
+                    <th>
+                        <label>{{seller.city}}</label>
+                    </th>
+                </tr>
+
+
+
+
+
+                <tr>
+                    <th>
+                        <label for=""> State </label>
+                    </th>
+                    <th>
+                        <label>{{seller.state}}</label>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for=""> PIN </label>
+                    </th>
+                    <th>
+                        <label>{{seller.pin}}</label>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <center> <a href="/updateseller" style="text-decoration: none;"><button
+                                    class=" hello">Update Profile</button> </a> </center>
+                    </th>
+                </tr>
+
+            </table>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+</div>
+<hr>
+
+
+
+
+<div class="container " >
+    <center> <a href="/addproducts" style="text-decoration: none;"><button
+        class="btn-lg hello w-100">ADD PRODUCT</button> </a> </center>
+</div>
+
+<div class="container " >
+    <center> <a href="/orderhistory/" style="text-decoration: none;"><button
+        class="btn-lg hello w-100">Order History</button> </a> </center>
+</div>
+
+<br>
+
+    <div  class=" container w-100 mybag text-light text-center"
+    style="height: 50px; margin-top: 15px; border-radius: 3px;">
+    <h5 style="margin-top: 10px; padding: 1.5%;">SELLER PROFILE SECTION </h5>
+    </div>
+
+
+<div class="container" style="overflow-x:auto;">
+    <table class="table  table-bordered mt-5 " style="padding: 15px ">
+        <tr>
+            <th>Product Name</th>
+            <th>Main Category</th>
+            <th>Sub Category/th>
+            <th>Brand Name</th>
+            <th>Size</th>
+            <th>Colour</th>
+            <th>Base Price</th>
+            <th>Discount %</th>
+            <th>Final Price </th>
+            <th>Stock</th>
+            <th>Images</th>
+            <th></th>
+            <th></th>
+        
+           
+
+
+        </tr>
+
+
+        {% for i in products %}
+        <tr>
+            <td style="width: 30% ;">{{i.name}}</td>
+            <td>{{i.main_cat}}</td>
+            <td>{{i.sub_cat}}</td>
+            <td>{{i.brand}}</td>
+            <td>{{i.size}}</td>
+            <td>{{i.color}}</td>
+            <td>{{i.baseprice}}</td>
+            <td>{{i.discount}}</td>
+            <td>{{i.final_price}} </td>
+            <td>{{i.stock}}</td>
+            <td>
+                <div style="height:310px; width:160px;" id="carouselExampleFade1{{i.id}}"
+                    class="carousel slide carousel-fade mt-5" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            {% if i.pic1 %}
+                            <img src="{{i.pic1.url}}" width="150px" height="300px"
+                                style="border-radius: 20px; padding: 2%;">
+                            {% else %}
+                            <img src='{% static "media/noimage.png/" %}' class="w-100">
+                            {% endif %}
+                        </div>
+                        {% if i.pic2 %}
+                        <div class="carousel-item">
+                            <img src="{{i.pic2.url}}" width="150px" height="300px"
+                                style="border-radius: 20px; padding: 2%;">
+                            </div>
+                            {% endif %}
+                            {% if i.pic3 %}
+                        <div class="carousel-item">
+                            <img src="{{i.pic3.url}}" width="150px" height="300px"
+                                style="border-radius: 20px; padding: 2%;">
+                            </div>
+                            {% endif %}
+                            {% if i.pic4 %}
+                        <div class="carousel-item">
+                            <img src="{{i.pic4.url}}" width="150px" height="300px"
+                                style="border-radius: 20px; padding: 2%;">
+                            </div>
+                            {% endif %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade1{{i.id}}"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade1{{i.id}}"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </td>
+
+            <td><a href="/updateproduct/{{i.id}}"class="red btn"
+                style=" color: antiquewhite;border-radius:40%; width: 80%;"><span
+                    class="material-symbols-outlined">
+                    upgrade 
+                </span></a></td>
+            <td><a href="/deleteproduct/{{i.id}}"class="red btn"
+                style=" color: antiquewhite;border-radius:40%; width: 80%;"><span
+                    class="material-symbols-outlined">
+                    delete_forever 
+                </span></a></td>
+        </tr>
+        {% endfor %}
+
+
+
+    </table>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

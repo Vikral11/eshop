@@ -1,0 +1,461 @@
+{% extends 'index.html'%}
+
+{% load static %}
+{% block title %}
+<title>Eshop Signup</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="btn-group dropend" id="myBtn" >
+    <button type="button" class="red m12" style="width: 50px; " id="dropdownMenuClickableInside" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+        <span
+        class="material-symbols-outlined">filter_alt</span>
+    </button>
+    <div style=" height:40px ; background: transparent; border: transparent;"   class="dropdown-menu m12"  aria-labelledby="dropdownMenuClickableInside">
+    <div class="dropdown-item row" style="background-color: rgba(253, 253, 253, .1) ; border-radius: 5%;">
+        
+        <div class="col m12" >
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item dropdown " >
+
+                    <a class="nav-link dropend-toggle  text-light" href="#" id="dropdownMenuClickableInside"
+                        role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                        aria-expanded="false">
+                        <h10 class="btn btnshop  btn-outline-success mybag"
+                            style="height: 37px ; color: antiquewhite;">
+                            Main Category</h10>
+                    </a>
+
+                    <ul class="dropdown-menu mybag" aria-labelledby="dropdownMenuClickableInside">
+                        <li>
+                            <a href="/shop/All/{{Sub}}/{{Bran}}/date" class="btn mybag btn-outline-dark "
+                                style="margin-bottom: 4%; font-size: .8rem ;width: 70%; margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">All</a>
+
+                        </li>
+                        {% for i in Maincat %}
+                        <li>
+                            <a href="/shop/{{i.name}}/{{Sub}}/{{Bran}}/date"
+                                class="  btn mybag btn-outline-dark "
+                                style="margin-bottom: 4%; font-size: .8rem ;width: 70%; margin-left: 20px; color: #93f071;text-shadow: 0px 0px 10px #93f071;">{{i.name}}</a>
+
+                        </li>
+                        {% endfor %}
+                        <hr class="dropdown-divider">
+                        <li class="nav-item dropend ">
+
+                            <a class="nav-link dropend-toggle  text-light" href="#" id="navbarDropdown"
+                                role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                                aria-expanded="false">
+                                <h10 class="btn btnshop   btn-outline-success mybag"
+                                    style="height: 37px ; color: antiquewhite;margin-left: 20px">
+                                    Sub Category</h10>
+                            </a>
+
+                            <ul class="dropdown-menu mybag" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="/shop/{{Main}}/All/{{Bran}}/date"
+                                        class="btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%; margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">All</a>
+
+                                </li>
+                                {% for i in Subcat %}
+                                <li>
+                                    <a href="/shop/{{Main}}/{{i.name}}/{{Bran}}/date"
+                                        class="  btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%; margin-left: 20px; color: #93f071;text-shadow: 0px 0px 10px #93f071;">{{i.name}}</a>
+
+                                </li>
+                                {% endfor %}
+                            </ul>
+
+                        </li>
+
+                    </ul>
+        </div>
+
+        <div class="col m12"><ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropend ">
+
+                <a class="nav-link dropend-toggle  text-light" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <h10 class="btn btnshop   btn-outline-success mybag"
+                        style="height: 37px ; color: antiquewhite;">
+                        Brand</h10>
+                </a>
+
+                <ul class="dropdown-menu mybag" aria-labelledby="navbarDropdown">
+                    <li>
+                        <a href="/shop/{{Main}}/{{Sub}}/All/date" class="btn mybag btn-outline-dark "
+                            style="margin-bottom: 4%; font-size: .8rem ;width: 70%;margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">All</a>
+
+                    </li>
+                    {% for i in Brand %}
+                    <li>
+                        <a href="/shop/{{Main}}/{{Sub}}/{{i.name}}/date"
+                            class="  btn mybag btn-outline-dark "
+                            style="margin-bottom: 4%; font-size: .8rem ;width: 70%; margin-left: 20px; color: #93f071;text-shadow: 0px 0px 10px #93f071;">{{i.name}}</a>
+
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </li>
+        </ul></div>
+
+        <div class="col m12">
+           
+                
+                
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropend ">
+
+                            <a class="nav-link dropend-toggle  text-light" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <h10 class="btn btnshop   btn-outline-success mybag"
+                                    style="height: 37px ; color: antiquewhite;">
+                                    Sort By</h10>
+                            </a>
+
+                            <ul class="dropdown-menu mybag" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="/shop/{{Main}}/{{Sub}}/{{Bran}}/name" class="btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%;margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">Relevance</a>
+
+                                </li>
+                                <li>
+                                    <a href="/shop/{{Main}}/{{Sub}}/{{Bran}}/date" class="btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%;margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">Newest
+                                        First</a>
+
+                                </li>
+                                <li>
+                                    <a href="/shop/{{Main}}/{{Sub}}/{{Bran}}/price1" class="btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%;margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">Price--Low
+                                        to High</a>
+
+                                </li>
+                                <li>
+                                    <a href="/shop/{{Main}}/{{Sub}}/{{Bran}}/price2" class="btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%;margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">Price--High
+                                        to Low</a>
+
+                                </li>
+
+                            </ul>
+
+                        </li>
+                    </ul>
+
+                
+            
+        
+
+
+
+
+    </div></div>
+        </div>
+        
+    </div>
+    
+  </div>
+<br>
+<br>
+<br class="m13">
+<br class="m13">
+
+
+<div class="container-fliuid m13">
+    <div class="row filters">
+        <div class="col-md-6 col-sm-12">
+
+            <div class="row" style="padding-left: 2%;">
+                <div class="col-md-2 ">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item dropdown ">
+
+                            <a class="nav-link dropdown-toggle  text-light" href="#" id="dropdownMenuClickableInside"
+                                role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                                aria-expanded="false">
+                                <h10 class="btn btnshop   btn-outline-success mybag"
+                                    style="height: 37px ; color: antiquewhite;">
+                                    Main Category</h10>
+                            </a>
+
+                            <ul class="dropdown-menu mybag" aria-labelledby="dropdownMenuClickableInside">
+                                <li>
+                                    <a href="/shop/All/{{Sub}}/{{Bran}}/date" class="btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%; margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">All</a>
+
+                                </li>
+                                {% for i in Maincat %}
+                                <li>
+                                    <a href="/shop/{{i.name}}/{{Sub}}/{{Bran}}/date"
+                                        class="  btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%; margin-left: 20px; color: #93f071;text-shadow: 0px 0px 10px #93f071;">{{i.name}}</a>
+
+                                </li>
+                                {% endfor %}
+                                <hr class="dropdown-divider">
+                                <li class="nav-item dropend ">
+
+                                    <a class="nav-link dropdown-toggle  text-light" href="#" id="navbarDropdown"
+                                        role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"
+                                        aria-expanded="false">
+                                        <h10 class="btn btnshop   btn-outline-success mybag"
+                                            style="height: 37px ; color: antiquewhite;margin-left: 20px">
+                                            Sub Category</h10>
+                                    </a>
+
+                                    <ul class="dropdown-menu mybag" aria-labelledby="navbarDropdown">
+                                        <li>
+                                            <a href="/shop/{{Main}}/All/{{Bran}}/date"
+                                                class="btn mybag btn-outline-dark "
+                                                style="margin-bottom: 4%; font-size: .8rem ;width: 70%; margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">All</a>
+
+                                        </li>
+                                        {% for i in Subcat %}
+                                        <li>
+                                            <a href="/shop/{{Main}}/{{i.name}}/{{Bran}}/date"
+                                                class="  btn mybag btn-outline-dark "
+                                                style="margin-bottom: 4%; font-size: .8rem ;width: 70%; margin-left: 20px; color: #93f071;text-shadow: 0px 0px 10px #93f071;">{{i.name}}</a>
+
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+                </div>
+                <div class="col-md-1 "></div>
+
+                <div class="col-md-2 ">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown ">
+
+                            <a class="nav-link dropdown-toggle  text-light" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <h10 class="btn btnshop   btn-outline-success mybag"
+                                    style="height: 37px ; color: antiquewhite;">
+                                    Brand</h10>
+                            </a>
+
+                            <ul class="dropdown-menu mybag" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="/shop/{{Main}}/{{Sub}}/All/date" class="btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%;margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">All</a>
+
+                                </li>
+                                {% for i in Brand %}
+                                <li>
+                                    <a href="/shop/{{Main}}/{{Sub}}/{{i.name}}/date"
+                                        class="  btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%; margin-left: 20px; color: #93f071;text-shadow: 0px 0px 10px #93f071;">{{i.name}}</a>
+
+                                </li>
+                                {% endfor %}
+                            </ul>
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 "></div>
+
+                <div class="col-md-1 "></div>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+            <div class="row" style="padding-right: 2%;">
+                <div class="col-md-10 "></div>
+                <div class="col-md-2 ">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown ">
+
+                            <a class="nav-link dropdown-toggle  text-light" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <h10 class="btn btnshop   btn-outline-success mybag"
+                                    style="height: 37px ; color: antiquewhite;">
+                                    Sort By</h10>
+                            </a>
+
+                            <ul class="dropdown-menu mybag" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a href="/shop/{{Main}}/{{Sub}}/{{Bran}}/name" class="btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%;margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">Relevance</a>
+
+                                </li>
+                                <li>
+                                    <a href="/shop/{{Main}}/{{Sub}}/{{Bran}}/date" class="btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%;margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">Newest
+                                        First</a>
+
+                                </li>
+                                <li>
+                                    <a href="/shop/{{Main}}/{{Sub}}/{{Bran}}/price1" class="btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%;margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">Price--Low
+                                        to High</a>
+
+                                </li>
+                                <li>
+                                    <a href="/shop/{{Main}}/{{Sub}}/{{Bran}}/price2" class="btn mybag btn-outline-dark "
+                                        style="margin-bottom: 4%; font-size: .8rem ;width: 70%;margin-left: 20px ;color: #93f071;text-shadow: 0px 0px 10px #93f071;">Price--High
+                                        to Low</a>
+
+                                </li>
+
+                            </ul>
+
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+    
+
+
+</div>
+
+
+<div class="container-fliuid" style=" border-left: 2px solid black; margin-top: -40px;">
+
+
+
+
+
+
+
+    <div class="row" style="padding: 2% ;">
+        {% if products %}
+        {% for i in products %}
+
+        <div class="col-md-3 col-sm-6 col-12 mt-3">
+            <a class="text-decoration-none" style="color: black;" href="/product_page/{{i.id}}">
+                <div class="card mybag " style=" border-radius: 20px">
+                    <center>
+                        <div style="height:auto; width:auto;" id="carouselExampleFade1{{i.id}}"
+                            class="carousel slide carousel-fade mt-3" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    {% if i.pic1 %}
+                                    <img src="{{i.pic1.url}}" class="w-100" height="300px"
+                                        style="border-radius: 20px; padding: 2%;">
+                                    {% else %}
+                                    <img src='{% static "media/noimage.png/" %}' class="w-100">
+                                    {% endif %}
+                                </div>
+                                {% if i.pic2 %}
+                                <div class="carousel-item">
+
+                                    <img src="{{i.pic2.url}}" class="w-100" height="300px"
+                                        style="border-radius: 20px; padding: 2%;">
+
+
+                                </div>
+                                {% endif %}
+                                {% if i.pic3 %}
+                                <div class="carousel-item">
+
+                                    <img src="{{i.pic3.url}}" class="w-100" height="300px"
+                                        style="border-radius: 20px; padding: 2%;">
+
+
+                                </div>
+                                {% endif %}
+                                {% if i.pic4 %}
+                                <div class="carousel-item">
+
+                                    <img src="{{i.pic4.url}}" class="w-100" height="300px"
+                                        style="border-radius: 20px; padding: 2%;">
+
+
+                                </div>
+                                {% endif %}
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleFade1{{i.id}}" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleFade1{{i.id}}" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </center>
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: rgb(173, 173, 173);height: 80px;">{{i.name}}</h5>
+                        <p class="card-text" style="color: rgb(173, 173, 173);">Price: &#8377;
+                            <strike>{{i.baseprice}}</strike><br>Discount:
+                            {{i.discount}}%<br>
+                            &#8377;{{i.final_price}}
+                        </p>
+                        <center> <a href="/AddToCart/{{i.id}}" class="red btn"
+                                style=" color: antiquewhite;border-radius:40%; width: 30%;"><span
+                                    class="material-symbols-outlined">shopping_cart</span></a>
+                            <a href="/wishlist/{{i.id}}" class="red btn"
+                                style=" color: antiquewhite;border-radius:40%; width: 30%;"><span
+                                    class="material-symbols-outlined">
+                                    favorite
+                                </span></a>
+                        </center>
+                    </div>
+                </div>
+            </a>
+
+
+
+        </div>
+        {% endfor %}
+
+
+
+
+
+        {% endif %}
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+{% if products %}
+{% else %}
+<center>
+    <img class="img-fluid" src="{% static '/media/noproduct.jpg/'%}"
+        style="width: 70%; opacity: .8; border-radius: 20px;">
+</center>
+{% endif %}
+
+
+
+
+
+
+
+
+{% endblock %}

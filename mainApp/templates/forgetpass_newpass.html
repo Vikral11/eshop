@@ -1,0 +1,33 @@
+{% extends 'index.html'%}
+
+{% load static %}
+{% block title %}
+<title>Eshop Login</title>
+{% endblock %}
+
+
+{% block body %}
+<div style="margin-top: 100px;"></div>
+
+<form action="" method="post" class="form-control" style="width: 90%; margin-left:  5%; opacity: .8;">
+    {% csrf_token %}
+    {% for i in messages %}
+    <div class="alert alert-danger" role="alert">
+        {{i}}
+    </div>
+    {% endfor %}
+    <label class="form-label" style="width: 40vw; font-weight: bold;">
+        Enter Password
+        <input type="text" name="pass" class="form-control">
+    </label>
+    <br>
+    <label class="form-label" style="width: 40vw;font-weight: bold;">
+        Confirm Password
+        <input type="text" name="cpass" class="form-control">
+    </label> <br>
+    
+    <label class="form-label">
+        <input type="submit" value="Reset password" class="hello mt-3" style="box-shadow: none">
+    </label>
+</form>
+{% endblock %}

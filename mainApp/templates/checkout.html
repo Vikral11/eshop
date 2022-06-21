@@ -1,0 +1,206 @@
+{% extends 'index.html'%}
+{% load cart %}
+{% load static %}
+{% block title %}
+<title>Eshop Checkout</title>
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<br>
+<div class=" container-fluid text-center text-light mybag" style="padding: .5%;">
+    <h2>Checkout</h2>
+</div>
+
+
+<div class="container-fluid" style="padding: 3%;">
+    <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+
+
+            <center>
+                <div class="row text-center text-light mybag w-100 mb-3" style="padding: .5%; ">
+                    <h4>YOUR DETAILS</h4>
+                </div>
+            </center>
+
+            <table class="table ">
+                <tr>
+                    <th>
+                        <label for=""> NAME: </label>
+                    </th>
+                    <th>
+                        <label>{{buyer.name}}</label>
+                    </th>
+                </tr>
+
+
+
+                <tr>
+                    <th>
+                        <label for=""> EMAIL: </label>
+                    </th>
+                    <th>
+                        <label>{{buyer.email}}</label>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for=""> PHONE NUMBER: </label>
+                    </th>
+                    <th>
+                        <label>{{buyer.phone}}</label>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for=""> ADDERSS 1: </label>
+                    </th>
+                    <th>
+                        <label>{{buyer.address1}}</label>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for=""> ADDERSS 2: </label>
+                    </th>
+                    <th>
+                        <label>{{buyer.address2}}</label>
+                    </th>
+                </tr>
+
+
+
+                <tr>
+                    <th>
+                        <label for=""> ADDERSS 3: </label>
+                    </th>
+                    <th>
+                        <label>{{buyer.address3}}</label>
+                    </th>
+                </tr>
+
+
+                <tr>
+                    <th>
+                        <label for=""> CITY: </label>
+                    </th>
+                    <th>
+                        <label>{{buyer.city}}</label>
+                    </th>
+                </tr>
+
+
+
+
+
+                <tr>
+                    <th>
+                        <label for=""> STATE: </label>
+                    </th>
+                    <th>
+                        <label>{{buyer.state}}</label>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for=""> PIN: </label>
+                    </th>
+                    <th>
+                        <label>{{buyer.pin}}</label>
+                    </th>
+                </tr>
+
+
+            </table>
+
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <center>
+                <div class="row text-center text-light mybag w-100 mb-3" style="padding: .5%; ">
+                    <h4>CHECKOUT SECTION</h4>
+                </div>
+            </center>
+
+            <table class="table  table-bordered">
+                <tr>
+                    <th>Pic</th>
+                    <th>Name</th>
+
+                    <th>Price</th>
+                    <th>
+                        Quantity
+                    </th>
+
+                    <th>Total Price</th>
+
+                </tr>
+                {% for i in product %}
+                <tr>
+                    <td><img src="{{i.pic1.url}}" width="50"></td>
+                    <td>{{i.name}}</td>
+
+                    <td>&#8377; {{i.final_price}}</td>
+
+                    <td> {{request| cartqty:i.id}}</td>
+
+                    <td>&#8377; {{request| cartTotal:i.id}}</td>
+
+                </tr>
+                {% endfor %}
+            </table>
+
+            <table class=" table table-bordered">
+                <tr>
+                    <th>Total Price</th>
+                    <td>&#8377; {{Total}}</td>
+                </tr>
+                <tr>
+                    <th> Shipping </th>
+                    <td>&#8377; {{Shipping}}</td>
+                </tr>
+                <tr>
+                    <th>Final Price</th>
+                    <td>&#8377; {{Final}}</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <form class="bg-transparent" action="" style= "opacity: .9;"method="post">
+                            {% csrf_token %}
+
+
+                            <label class="form-label">PAYMENT OPTION</label>
+                            <select class="form-control" name="mode">
+                                <option value="COD">COD</option>
+                                <option value="Net">NET BANKING/CARD/UPI</option>
+                            </select>
+
+                            {% if request|checkshow:Final %}
+                            <button type="submit" style=" width: 100%;" class="hello  text-center">Checkout</button>
+                            {% else %}
+                            <a href=""><button type="button" style=" width: 100%;"
+                                    class="btn btn-secondary btn-lg" disabled>Checkout</button></a>
+                            {% endif %}
+
+                        </form>
+                    </td>
+                </tr>
+            </table>
+
+
+
+        </div>
+
+    </div>
+
+    {% endblock %}

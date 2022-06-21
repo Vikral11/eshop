@@ -1,0 +1,40 @@
+{% extends 'index.html'%}
+
+{% load static %}
+{% block title %}
+<title>Eshop Login</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+<div style="margin-top: 100px;"></div>
+
+<form action="" method="post" class="form-control" style="width: 90%; margin-left:  5%; opacity: .8;">
+    {% csrf_token %}
+    {% for i in messages %}
+    <div class="alert alert-danger" role="alert">
+        {{i}}
+    </div>
+    {% endfor %}
+    <label class="form-label mt-3" style="font-weight: bold;" >
+        Enter Your Email
+        <input type="email" name="mail" class="form-control" style="width: 40vw;" placeholder="Name">
+    </label>
+    <br>
+    <label class="form-label" style="font-weight: bold;">
+        Enter Your account type
+        <select name="actype" class="form-control" style="width: 40vw;">
+            <option value="buyer"> Buyer </option>
+            <option value="seller"> Seller </option>
+        </select>
+    </label>
+    <br>
+    <label class="form-label" >
+        <input type="submit" class="hello mt-3" style="width:100px; box-shadow: none;">
+    </label>
+</form>
+
+
+{% endblock %}

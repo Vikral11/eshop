@@ -1,0 +1,145 @@
+{% extends 'index.html'%}
+{% load cart %}
+{% load static %}
+{% block title %}
+<title>Eshop Signup</title>
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div  class="w-100 mybag text-light text-center"
+        style="height: 50px; margin-top: 15px; border-radius: 3px;">
+        <h5 style="margin-top: 10px; padding: 1.5%;">Update Order History </h5>
+        </div>
+    <div class="row">
+        <table class="table mt-3" >
+            <tr>
+                <th>
+                    <label for="">PRODUCT NAME: </label>
+                </th>
+                <th>
+                    <label>{{i.product.name}}</label>
+                </th>
+            </tr>
+
+
+
+            <tr>
+                <th>
+                    <label for="">QUANTITY: </label>
+                </th>
+                <th>
+                    <label>{{i.qty}}</label>
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for=""> BUYER NAME: </label>
+                </th>
+                <th>
+                    <label>{{i.buyer.name}}</label>
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for=""> BUYER ADDRESS: </label>
+                </th>
+                <th>
+                    <label>{{i.buyer.address1}}</label>
+                </th>
+            </tr>
+
+            <tr>
+                <th>
+                    <label for=""> FINAL PRICE: </label>
+                </th>
+                <th>
+                    <label>{{i.total}}</label>
+                </th>
+            </tr>
+
+
+
+            <tr>
+                <th>
+                    <label for=""> CHECKOUT MODE: </label>
+                </th>
+                <th>
+                    <label>{{i.checkout.mode}}</label>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label for=""> ORDER STATUS: </label>
+                </th>
+                <th>
+                    <label>{{request|orderstat:i}}</label>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label for=""> PAYMENT STATUS: </label>
+                </th>
+                <th>
+                    <label>{{request|paystat:i.checkout}}</label>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <label for=""> ACTIVITY STATUS: </label>
+                </th>
+                <th>
+                    <label>{{i.active}}</label>
+                </th>
+            </tr>
+
+        </table>
+        <form method="post" class="form-control bg-transparent " style="opacity: .9; color: antiquewhite;">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="actype" class="form-label">Order Status</label>
+                <select name="orderstat" class="form-control">
+                    <option value="1" >Not Packed</option>
+                    <option value="2">Packed</option>
+                    <option value="3">Out for delivery</option>
+                    <option value="4">Delivered</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="actype" class="form-label">Payment Status</label>
+                <select name="paymentstat" class="form-control">
+                    <option value="1" >Pending</option>
+                    <option value="2">Done</option>
+                    
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="actype" class="form-label">Activity Status</label>
+                <select name="actistat" class="form-control">
+                    <option value="True" >True</option>
+                    <option value="False">False</option>
+                    
+                </select>
+            </div>
+            <center><button type="submit" style="width: 40%;" class="red1">Update</button></center>
+        </form>
+    </div>
+
+
+
+    
+</div>
+
+
+
+
+
+
+{% endblock %}

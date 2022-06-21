@@ -1,0 +1,64 @@
+{% extends 'index.html'%}
+
+{% load static %}
+{% block title %}
+<title>Eshop Login</title>
+{% endblock %}
+
+
+{% block body %}
+<br>
+<br>
+<br>
+
+<div class="container-fliuid" style="border: 2px solid black;">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-12">
+            <img src="{% static 'media/login.jpg' %}" class="w-100">
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+            <div  class="mb-3 w-100 mybag text-light text-center"
+        style="height: 50px; margin-top: 15px; border-radius: 3px;">
+        <h5 style="margin-top: 10px; padding: 1.5%;">Login Section </h5>
+        </div>
+            {% for i in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{i}}
+            </div>
+            {% endfor %}
+            <form method="post" style="opacity: .9;">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="text-light form-label">Username</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label text-light">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                </div>
+
+                <button type="submit" style=" width: 60%;" class="hello  text-center">Login</button>
+                <a href="/signup" class="text-decoration-none">
+                    <p style="color: antiquewhite ;">New user? Create an Free Account</p>
+                </a>
+                <a style="color: antiquewhite ;" href="/forgetpassword-email/" class="text-decoration-none">
+                    <p>Forget password?</p>
+                </a>
+            </form>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+</div>
+{% endblock %}
